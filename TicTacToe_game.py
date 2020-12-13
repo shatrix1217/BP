@@ -13,18 +13,12 @@ class Tic_Tac_Toe:
 
     def print_board_nums():
         #0 | 1 | 2 
-        number_board = [[str(i) for i in range(j*3:(j+1)*3)] for j in range(3)]
+        number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
         for row in number_board:
             print("| ", " | ".join(row) + " |" )
 
     def available_moves(self):
         return[i for i,spot in enumerate(self.board) if spot == " "]
-       """  moves = []
-        for (i, spot) in enumerate(self.board):
-            if spot == " ":
-                moves.append(i)
-
-        return moves """
 
     def empty_squares(self):
         return " " in self.board #return a boolean to check if there's empty space
@@ -95,10 +89,6 @@ def play(game, x_player, o_player, print_game = True):
 
             #after we made our move, alternate letters
             letter = "O" if letter == "X" else "X"
-         """    if letter == "X":
-                letter = "O"
-            else:
-                letter = "X" """
 
         if print_game:
             print("it\'s a tie!")
