@@ -1,4 +1,5 @@
 from TicTacToe_player import HumanPlayer, RandomComputerPlayer
+import math
 
 class Tic_Tac_Toe:
     def __init__(self):
@@ -11,7 +12,7 @@ class Tic_Tac_Toe:
         for row in [self.board[i*3:(i+1)*3] for i in range(3)]:
             print("| ", " | ".join(row) + " |" )
 
-    def print_board_nums():
+    def print_board_nums(self):
         #0 | 1 | 2 
         number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
         for row in number_board:
@@ -90,24 +91,11 @@ def play(game, x_player, o_player, print_game = True):
             #after we made our move, alternate letters
             letter = "O" if letter == "X" else "X"
 
-        if print_game:
-            print("it\'s a tie!")
+    if print_game:
+        print("it\'s a tie!")
 
 if __name__ == "__main__":
     x_player = HumanPlayer("X")
     o_player = RandomComputerPlayer("O")
     t = Tic_Tac_Toe()
     play(t, x_player, o_player, print_game = True)
-
-        
-
-
-
-
-
-
-
-            
-
-
-
