@@ -8,10 +8,10 @@ def naive_search(list, target):
 
 #binary search
 def binary_search(list, target, low = None, high = None):
-    if low = None:
+    if low is None:
         low = 0
 
-    if high = None:
+    if high is None:
         high = len(list) - 1
 
     if high < low:
