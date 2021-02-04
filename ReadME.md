@@ -1,2 +1,1 @@
-Projects created for practicing.
-
+Projects created for code practicing.
