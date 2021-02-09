@@ -25,8 +25,37 @@ X_OneHotEncoded = pd.get_dummies(X, columns = ['City', 'Gender', 'Senior_Citizen
 X_train, X_test, y_train, y_test = train_test_split(X_OneHotEncoded, y, random_state = 0, stratify = True)
 
 #try to find out the ideal parameter
+param_grid = {
+    'max_depth' : [3, 4, 5],
+    'learning_rate' : [0.1, 0.01, 0.05],
+    'gamma' : [0, 0.25, 1.0],
+    'reg_lambda' : [0, 1.0, 10.0],
+    'scale_pos_weight' : [3]
+}
 
-clf_xgb = xgb.XGBClassifier(objective = 'binary:logistic', missing = None, seed = 42)
+optimal_params = GridSearchCV(
+    estimator = xgb.XGBClassifier(objective = 'binary:logistic', seed = 42, subsample = 0.9, colsample_bytree = 0.5),
+    param_grid = param_grid,
+    scoring = 'roc_auc',
+    verbose = 0,
+    n_jobs = 10,
+    cv = 3
+    )
+)
+
+optimal_params.fit(
+    X_train,
+    y_train,
+    early_stopping_rounds = 10,
+    eval_metric = 'auc',
+    eval_set = [(X_test, y_test)],
+    verbose = False
+)
+
+print(optimal_params.best_params)
+
+clf_xgb = xgb.XGBClassifier(objective = 'binary:logistic', missing = None, seed = 42, gamma = 0.25, learn_rate = 0.1, max_depth = 4, reg_lamda = 10, scale_pos_weight = 3, subsample = 0.9, colsample_bytree = 0.5)
+
 clf_xgb.fit(
     X_train,
     y_train,
