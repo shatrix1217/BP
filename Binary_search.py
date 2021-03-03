@@ -33,7 +33,3 @@ if __name__ == "__main__":
     target = 10
 
     print(binary_search(list, target))
-
-
-
-
