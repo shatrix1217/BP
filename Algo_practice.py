@@ -1,5 +1,5 @@
 #Quick sort
-target_Q = [3, 0, 2, 4, 1, 8, 9, 12, 7, 14, 6, -5]
+target_Q = [3, 2, 4, 1, 8, 9, 12, 7, 14, 6]
 #Quick sort first trial
 # def Quick_sort(A, l, r):
 #     l = A[0]
@@ -21,23 +21,24 @@ target_Q = [3, 0, 2, 4, 1, 8, 9, 12, 7, 14, 6, -5]
 #Quick sort second trial
 def Quick_sort(sequence):
     length = len(sequence)
+
     if length <= 1:
         return sequence
     else:
         pivot = sequence.pop()
 
-    element_bigger = []
-    element_smaller = []
+    elements_bigger = []
+    elements_smaller = []
 
-    for i in sequence:
-        if i > pivot:
-            element_bigger.append(i)
+    for item in sequence:
+        if item > pivot:
+            elements_bigger.append(item)
         else:
-            element_smaller.append(i)
+            elements_smaller.append(item)
 
-    return Quick_sort(element_smaller) + [pivot] + Quick_sort(element_smaller)
+    return Quick_sort(elements_smaller) + [pivot] + Quick_sort(elements_bigger)
 
 print(Quick_sort(target_Q))
 
 #Merge sort
-#target_M = [3, -2, -1, 0, 2, 4, 1]
+target_M = [3, 0, 2, 4, 1, 8, 9, 12, 7, 14, 6, -5]
