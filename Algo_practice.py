@@ -1,5 +1,5 @@
 #Quick sort
-target_Q = [3, 2, 4, 1, 8, 9, 12, 7, 14, 6]
+target_Q = [3, 2, 4, 1, 8, 9, 12, 7, 14, 6, -11, -4, -5, 44]
 #Quick sort first trial
 # def Quick_sort(A, l, r):
 #     l = A[0]
@@ -41,4 +41,39 @@ def Quick_sort(sequence):
 print(Quick_sort(target_Q))
 
 #Merge sort
-target_M = [3, 0, 2, 4, 1, 8, 9, 12, 7, 14, 6, -5]
+target_M = [3, 0, 2, 4, 1, 8, 9, 12, 7, 14, 6]
+
+#Merge sort first trial
+def Merge_sort(array):
+
+    if len(array) <= 1:
+        return array
+
+    mid_point = int(len(array)/2)
+    left, right = Merge_sort(array[ :mid_point]), Merge_sort(array[mid_point: ])
+    
+    return Merge(left, right)
+
+def Merge(left, right):
+    left_pointer = 0
+    right_pointer = 0
+    
+    result = []
+
+    while left_pointer < len(left) and right_pointer < len(right):
+        if left[left_pointer] > right[right_pointer]:
+            result.append(right[right_pointer])
+            right_pointer += 1
+
+        else:
+            result.append(left[left_pointer])
+            left_pointer += 1
+
+    result.extend(left[left_pointer:])
+    result.extend(right[right_pointer:])
+
+    return result
+
+print(Merge_sort(target_M))
+
+#Merge sort second trial
