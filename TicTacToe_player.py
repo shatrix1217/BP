@@ -89,14 +89,3 @@ class Unbeatable_ComputerPlayer(player):
                     best = sim_score
 
         return best
-
-            
-
-
-
-
-
-
-
-
-
